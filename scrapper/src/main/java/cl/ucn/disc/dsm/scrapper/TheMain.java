@@ -25,7 +25,7 @@ import lombok.extern.slf4j.Slf4j;
  * @author Nicolas Barrios Avendaño
  */
 
-public class TheName {
+public class TheMain {
     /**
      *
      * @param args
