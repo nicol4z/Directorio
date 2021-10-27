@@ -1,48 +1,50 @@
 package cl.ucn.disc.dsm.scrapper;
 
 
-ǝdǝԀʅƎ — hoy a las 3:39
-        package cl.ucn.disc.dsm.javalos.scrapper;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 
-import lombok.extern.slf4j.Slf4j;
-
-import org.apache.commons.io.FileUtils;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 
-import java.io.File;
+
 import java.io.IOException;
-import java.nio.charset.StandardCharsets;
-import java.util.ArrayList;
-import java.util.List;
+
+
 import lombok.extern.slf4j.Slf4j;
 
 /**
- * Main class to scrappe the Directorio Telefonico of UCN
- * @author Nicolas Barrios Avendaño
+ * Main class to scrappe the Directorio Telefonico of UCN.
+ * @author Nicolas Barrios
  */
 
+@Slf4j
 public class TheMain {
     /**
-     *
-     * @param args
-     * @throws IOException
+     * The starting point
+     * @param args to use
      */
+
     public static void main(String[] args) throws IOException {
-        log.debug("Starting the Scrapping ..");
+
+
+        log.debug("Starting the scrapping ..");
 
         //connect and get the Document
-        Document doc = Jsoup
-                .connect("http://admision01.ucn.cl/directoriotelefonicoemail/fichaGenerica/?cod=142%22)
-                        .get();
+        Document doc = Jsoup.connect("https://admision01.ucn.cl/directoriotelefonicoemail/fichaGenerica/?cod=142").get();
 
-        String nombre=doc.getElementById("lblNombre").text();
-        String cargo=doc.getElementById("lblCargo").text();
+        //Scrapping
+        String nombre = doc.getElementById("lblNombre").text();
+        String cargo = doc.getElementById("lblCargo").text();
+        String unidad = doc.getElementById("lblUnidad").text();
+        String email = doc.getElementById("lblEmail").text();
+        String telefono = doc.getElementById("lblTelefono").text();
+        String oficina = doc.getElementById("lblOficina").text();
+        String direccion = doc.getElementById("lblDireccion").text();
 
-        log.debug("Nombre: {}, Cargo :{} ", nombre,cargo);
+
+        log.debug("Nombre: {}, Cargo: {}", nombre, cargo);
+
         log.debug("Done.");
     }
+
 }
